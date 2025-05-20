@@ -124,6 +124,24 @@
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     });
+
+    // 初始化加载保存的内容
+window.addEventListener("load", () => {
+  const saved = localStorage.getItem("wishMessage");
+  if (saved) {
+    document.getElementById("message").textContent = saved;
+    document.getElementById("wishInput").value = saved;
+  }
+});
+
+function changeMessage() {
+  const input = document.getElementById("wishInput").value;
+  if (input.trim()) {
+    document.getElementById("message").textContent = input.trim();
+    localStorage.setItem("wishMessage", input.trim()); // 保存到localStorage
+  }
+}
+
   </script>
 </body>
 </html>
